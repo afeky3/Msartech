@@ -1,0 +1,30 @@
+name: Update Subscribers CSV
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allow manual workflow runs
+
+jobs:
+  update-csv:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Configure Git
+      run: |
+        git config --local user.name "github-actions"
+        git config --local user.email "actions@github.com"
+
+    - name: Upload Subscribers CSV
+      run: |
+        if [ -f "subscribers.csv" ]; then
+          git add subscribers.csv
+          git commit -m "Update subscribers.csv with new emails"
+          git push
+        else
+          echo "No CSV file found. Ensure 'subscribers.csv' exists in the root directory."
+        fi
