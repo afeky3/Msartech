@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Countdown Timer
-    const targetDate = new Date('2025-3-1T00:00:00');
+    const targetDate = new Date('2025-03-01T00:00:00');
     const daysElem = document.getElementById('days');
     const hoursElem = document.getElementById('hours');
     const minutesElem = document.getElementById('minutes');
